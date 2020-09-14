@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ik3DtWs", "ik3DtWs\ik3DtWs.csproj", "{5E387C1C-AF34-4F76-BB2C-A6BB6552147E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "linkTimer", "linkTimer\linkTimer.csproj", "{6A012EA0-40F0-4CED-8722-F8DDB296CE0F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5E387C1C-AF34-4F76-BB2C-A6BB6552147E} = {5E387C1C-AF34-4F76-BB2C-A6BB6552147E}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E387C1C-AF34-4F76-BB2C-A6BB6552147E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E387C1C-AF34-4F76-BB2C-A6BB6552147E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E387C1C-AF34-4F76-BB2C-A6BB6552147E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E387C1C-AF34-4F76-BB2C-A6BB6552147E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A012EA0-40F0-4CED-8722-F8DDB296CE0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A012EA0-40F0-4CED-8722-F8DDB296CE0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A012EA0-40F0-4CED-8722-F8DDB296CE0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A012EA0-40F0-4CED-8722-F8DDB296CE0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xml>
+<T_Dept>
+<FNumber>001.001</FNumber>
+<FName>HAHA</FName>
+<FParentNumber>001</FParentNumber>
+<FDProperty>1070</FDProperty>
+<FCostAccountType>APD</FCostAccountType>
+<FNote>不想管你了</FNote>
+</T_Dept>
+<T_Dept>
+<FNumber>027.01.003</FNumber>
+<FName>没啥好吃的</FName>
+<FParentNumber>027.01</FParentNumber>
+<FDProperty>1070</FDProperty>
+<FCostAccountType>APD</FCostAccountType>
+<FNote>混蛋才是真绝色</FNote>
+</T_Dept>
+</xml>

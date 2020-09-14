@@ -1,0 +1,208 @@
+﻿<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://192.168.0.29:8080/axis/ysxt_jk.jws" xmlns:intf="http://192.168.0.29:8080/axis/ysxt_jk.jws"xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://dom4j.org" xmlns:tns2="http://lang.java" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://192.168.0.29:8080/axis/ysxt_jk.jws">
+<!--
+WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)
+-->
+<wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://dom4j.org">
+<import namespace="http://lang.java"/>
+<import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+<complexType name="DocumentException">
+<sequence>
+<element name="message" nillable="true" type="xsd:string"/>
+<element name="nestedException" nillable="true" type="xsd:anyType"/>
+</sequence>
+</complexType>
+</schema>
+</wsdl:types>
+<wsdl:message name="DocumentException">
+<wsdl:part name="fault" type="tns1:DocumentException"/>
+</wsdl:message>
+<wsdl:message name="Yh_CheckResponse">
+<wsdl:part name="Yh_CheckReturn" type="xsd:string"/>
+</wsdl:message>
+<wsdl:message name="Bm_InfoRequest">
+<wsdl:part name="queryString" type="xsd:string"/>
+<wsdl:part name="uid" type="xsd:string"/>
+<wsdl:part name="pwd" type="xsd:string"/>
+</wsdl:message>
+<wsdl:message name="Task_PushedRequest">
+<wsdl:part name="queryString" type="xsd:string"/>
+<wsdl:part name="uid" type="xsd:string"/>
+<wsdl:part name="pwd" type="xsd:string"/>
+<wsdl:part name="fURL" type="xsd:string"/>
+</wsdl:message>
+<wsdl:message name="reimbursement_InfoResponse">
+<wsdl:part name="reimbursement_InfoReturn" type="xsd:string"/>
+</wsdl:message>
+<wsdl:message name="Yg_InfoRequest">
+<wsdl:part name="queryString" type="xsd:string"/>
+<wsdl:part name="uid" type="xsd:string"/>
+<wsdl:part name="pwd" type="xsd:string"/>
+</wsdl:message>
+<wsdl:message name="Task_PushedResponse">
+<wsdl:part name="Task_PushedReturn" type="xsd:string"/>
+</wsdl:message>
+<wsdl:message name="reimbursement_InfoRequest">
+<wsdl:part name="queryString" type="xsd:string"/>
+<wsdl:part name="uid" type="xsd:string"/>
+<wsdl:part name="pwd" type="xsd:string"/>
+</wsdl:message>
+<wsdl:message name="budget_editRequest">
+<wsdl:part name="queryString" type="xsd:string"/>
+<wsdl:part name="uid" type="xsd:string"/>
+<wsdl:part name="pwd" type="xsd:string"/>
+</wsdl:message>
+<wsdl:message name="budget_editResponse">
+<wsdl:part name="budget_editReturn" type="xsd:string"/>
+</wsdl:message>
+<wsdl:message name="Task_FinishRequest">
+<wsdl:part name="queryString" type="xsd:string"/>
+<wsdl:part name="uid" type="xsd:string"/>
+<wsdl:part name="pwd" type="xsd:string"/>
+</wsdl:message>
+<wsdl:message name="Task_FinishResponse">
+<wsdl:part name="Task_FinishReturn" type="xsd:string"/>
+</wsdl:message>
+<wsdl:message name="Bm_InfoResponse">
+<wsdl:part name="Bm_InfoReturn" type="xsd:string"/>
+</wsdl:message>
+<wsdl:message name="Yg_InfoResponse">
+<wsdl:part name="Yg_InfoReturn" type="xsd:string"/>
+</wsdl:message>
+<wsdl:message name="Yh_CheckRequest">
+<wsdl:part name="queryString" type="xsd:string"/>
+<wsdl:part name="uid" type="xsd:string"/>
+<wsdl:part name="pwd" type="xsd:string"/>
+</wsdl:message>
+<wsdl:portType name="ysxt_jk">
+<wsdl:operation name="Bm_Info" parameterOrder="queryString uid pwd">
+<wsdl:input message="impl:Bm_InfoRequest" name="Bm_InfoRequest"/>
+<wsdl:output message="impl:Bm_InfoResponse" name="Bm_InfoResponse"/>
+<wsdl:fault message="impl:DocumentException" name="DocumentException"/>
+</wsdl:operation>
+<wsdl:operation name="Yg_Info" parameterOrder="queryString uid pwd">
+<wsdl:input message="impl:Yg_InfoRequest" name="Yg_InfoRequest"/>
+<wsdl:output message="impl:Yg_InfoResponse" name="Yg_InfoResponse"/>
+<wsdl:fault message="impl:DocumentException" name="DocumentException"/>
+</wsdl:operation>
+<wsdl:operation name="Yh_Check" parameterOrder="queryString uid pwd">
+<wsdl:input message="impl:Yh_CheckRequest" name="Yh_CheckRequest"/>
+<wsdl:output message="impl:Yh_CheckResponse" name="Yh_CheckResponse"/>
+<wsdl:fault message="impl:DocumentException" name="DocumentException"/>
+</wsdl:operation>
+<wsdl:operation name="reimbursement_Info" parameterOrder="queryString uid pwd">
+<wsdl:input message="impl:reimbursement_InfoRequest" name="reimbursement_InfoRequest"/>
+<wsdl:output message="impl:reimbursement_InfoResponse" name="reimbursement_InfoResponse"/>
+<wsdl:fault message="impl:DocumentException" name="DocumentException"/>
+</wsdl:operation>
+<wsdl:operation name="budget_edit" parameterOrder="queryString uid pwd">
+<wsdl:input message="impl:budget_editRequest" name="budget_editRequest"/>
+<wsdl:output message="impl:budget_editResponse" name="budget_editResponse"/>
+<wsdl:fault message="impl:DocumentException" name="DocumentException"/>
+</wsdl:operation>
+<wsdl:operation name="Task_Pushed" parameterOrder="queryString uid pwd fURL">
+<wsdl:input message="impl:Task_PushedRequest" name="Task_PushedRequest"/>
+<wsdl:output message="impl:Task_PushedResponse" name="Task_PushedResponse"/>
+<wsdl:fault message="impl:DocumentException" name="DocumentException"/>
+</wsdl:operation>
+<wsdl:operation name="Task_Finish" parameterOrder="queryString uid pwd">
+<wsdl:input message="impl:Task_FinishRequest" name="Task_FinishRequest"/>
+<wsdl:output message="impl:Task_FinishResponse" name="Task_FinishResponse"/>
+<wsdl:fault message="impl:DocumentException" name="DocumentException"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="ysxt_jkSoapBinding" type="impl:ysxt_jk">
+<wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="Bm_Info">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="Bm_InfoRequest">
+<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+</wsdl:input>
+<wsdl:output name="Bm_InfoResponse">
+<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://192.168.0.29:8080/axis/ysxt_jk.jws" use="encoded"/>
+</wsdl:output>
+<wsdl:fault name="DocumentException">
+<wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="DocumentException" namespace="http://192.168.0.29:8080/axis/ysxt_jk.jws" use="encoded"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="Yg_Info">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="Yg_InfoRequest">
+<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+</wsdl:input>
+<wsdl:output name="Yg_InfoResponse">
+<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://192.168.0.29:8080/axis/ysxt_jk.jws" use="encoded"/>
+</wsdl:output>
+<wsdl:fault name="DocumentException">
+<wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="DocumentException" namespace="http://192.168.0.29:8080/axis/ysxt_jk.jws" use="encoded"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="Yh_Check">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="Yh_CheckRequest">
+<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+</wsdl:input>
+<wsdl:output name="Yh_CheckResponse">
+<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://192.168.0.29:8080/axis/ysxt_jk.jws" use="encoded"/>
+</wsdl:output>
+<wsdl:fault name="DocumentException">
+<wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="DocumentException" namespace="http://192.168.0.29:8080/axis/ysxt_jk.jws" use="encoded"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="reimbursement_Info">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="reimbursement_InfoRequest">
+<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+</wsdl:input>
+<wsdl:output name="reimbursement_InfoResponse">
+<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://192.168.0.29:8080/axis/ysxt_jk.jws" use="encoded"/>
+</wsdl:output>
+<wsdl:fault name="DocumentException">
+<wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="DocumentException" namespace="http://192.168.0.29:8080/axis/ysxt_jk.jws" use="encoded"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="budget_edit">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="budget_editRequest">
+<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+</wsdl:input>
+<wsdl:output name="budget_editResponse">
+<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://192.168.0.29:8080/axis/ysxt_jk.jws" use="encoded"/>
+</wsdl:output>
+<wsdl:fault name="DocumentException">
+<wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="DocumentException" namespace="http://192.168.0.29:8080/axis/ysxt_jk.jws" use="encoded"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="Task_Pushed">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="Task_PushedRequest">
+<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+</wsdl:input>
+<wsdl:output name="Task_PushedResponse">
+<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://192.168.0.29:8080/axis/ysxt_jk.jws" use="encoded"/>
+</wsdl:output>
+<wsdl:fault name="DocumentException">
+<wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="DocumentException" namespace="http://192.168.0.29:8080/axis/ysxt_jk.jws" use="encoded"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="Task_Finish">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="Task_FinishRequest">
+<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+</wsdl:input>
+<wsdl:output name="Task_FinishResponse">
+<wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://192.168.0.29:8080/axis/ysxt_jk.jws" use="encoded"/>
+</wsdl:output>
+<wsdl:fault name="DocumentException">
+<wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="DocumentException" namespace="http://192.168.0.29:8080/axis/ysxt_jk.jws" use="encoded"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="ysxt_jkService">
+<wsdl:port binding="impl:ysxt_jkSoapBinding" name="ysxt_jk">
+<wsdlsoap:address location="http://192.168.0.29:8080/axis/ysxt_jk.jws"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
+

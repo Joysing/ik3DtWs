@@ -1,0 +1,15 @@
+1．	uId和pwd初定值定为ysjkyh
+
+参数名称	参数描述	参数类型	备注
+queryStr	查询参数，如为空，则返回所有的部门数据	String	此参数为调用方传递参数之用，为了实现扩展性，该参数采用字符串进行传递，即”Key1:Value1,Key2:Value2,……”
+本接口支持的Key如下表(区分大小写)：
+
+Key	中文解释	类型	说明
+kssj	部门更新时间	时间	时间格式为yyyy-mm-dd
+jssj	部门更新时间	时间	时间格式为yyyy-mm-dd
+
+uId	接口接入用户名	String	该参数由接口提供方分配，目前暂定为ysjkyh
+pwd	接口接入密码	String	该参数有接口提供方提供，目前暂定为ysjkyh_123456（区分大小写）
+
+
+http://192.168.0.29:8080/axis/ysxt_jk.jws

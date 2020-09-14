@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xml>
+<T_DeptGroup>
+<FNumber>023</FNumber>
+<FName>HAHA</FName>
+<FParentNumber>0</FParentNumber>
+<FParentName>*</FParentName>
+</T_DeptGroup>
+<T_DeptGroup>
+<FNumber>025</FNumber>
+<FName>钱多多的</FName>
+<FParentNumber>0</FParentNumber>
+<FParentName>*</FParentName>
+</T_DeptGroup>
+</xml>

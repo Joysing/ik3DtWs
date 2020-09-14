@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xml>
+<T_Voucher>
+	<FDate>2016-07-28 00:00:00</FDate>
+	<FTransDate>2016-07-28 00:00:00</FTransDate>
+	<FYear>2016</FYear>
+	<FPeriod>7</FPeriod>
+	<FGroupID>1</FGroupID>
+	<FNumber></FNumber>
+	<FPreparerID>刘玉娟</FPreparerID>
+	<FExplanation>收款</FExplanation>
+	<FDebitTotal>100.0000</FDebitTotal>
+	<FReference>收100块</FReference>
+	<FSerialNum>162</FSerialNum>
+	<FParameter></FParameter>
+	<FFootNote>0</FFootNote>
+	<T_VoucherEntrys>
+		<T_VoucherEntry>
+			<FAccountNum>1002.01</FAccountNum>
+			<FAccountName>银行存款_人民币户</FAccountName>
+			<FAmountFor>100.0000</FAmountFor>
+			<FDC>1</FDC>
+			<FExplanation>收款</FExplanation>
+			<FEntryID>0</FEntryID>
+			<FDeptNum>102002</FDeptNum>
+			<FDeptName>财务部</FDeptName>
+			<FProjNum>CW-5-3</FProjNum>
+			<FProjName>传递财税法规</FProjName>
+		</T_VoucherEntry>
+		<T_VoucherEntry>
+			<FAccountNum>6601.15.05</FAccountNum>
+			<FAccountName>业务员保险</FAccountName>
+			<FAmountFor>100.0000</FAmountFor>
+			<FDC>0</FDC>
+			<FExplanation>银行存款</FExplanation>
+			<FEntryID>1</FEntryID>
+			<FDeptNum></FDeptNum>
+			<FDeptName></FDeptName>
+			<FProjNum></FProjNum>
+			<FProjName></FProjName>
+		</T_VoucherEntry>
+	</T_VoucherEntrys>
+</T_Voucher>
+</xml>
+
+
+
+
+
+
