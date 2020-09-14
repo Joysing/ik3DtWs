@@ -136,6 +136,7 @@ namespace linkTimer
         /// </summary>
         private static string DeptSync(string time)
         {
+            DateTime now = DateTime.Now;
 
             string sResult;
             string oaAllDept = null;
@@ -144,7 +145,7 @@ namespace linkTimer
             {
                 string oaUrl = "http://192.168.0.29:8080/axis/ysxt_jk.jws?wsdl";
                 string oaName = "Bm_Info";
-                string syncDate="kssj:2011-10-03,jssj:"+time;
+                string syncDate= "kssj:" + now.AddDays(-1.0).ToString("yyyy-MM-dd") + ",jssj:" + now.ToString("yyyy-MM-dd");
                 string[] oaParam = { syncDate, "ysjkyh", "ysjkyh_123456" };
                 WebServiceProxy oaWsd = new WebServiceProxy(oaUrl, oaName);
                 oaAllDept = (string)oaWsd.ExecuteQuery(oaName, oaParam);
