@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ik3DtWs", "ik3DtWs\ik3DtWs.csproj", "{5E387C1C-AF34-4F76-BB2C-A6BB6552147E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "linkTimer", "linkTimer\linkTimer.csproj", "{6A012EA0-40F0-4CED-8722-F8DDB296CE0F}"
@@ -25,5 +27,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C5175682-16AC-4A1B-A505-E3B478C49D16}
 	EndGlobalSection
 EndGlobal

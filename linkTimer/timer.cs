@@ -33,15 +33,16 @@ namespace linkTimer
             Console.WriteLine("等待程序的执行......");
             Console.WriteLine("正在同步......");
             //DateTime now = DateTime.Now;
-            //string Sync = DeptSync(now.ToString("yyyy-MM-dd"));
-            //if (!string.IsNullOrEmpty(Sync))
-            //{
-
-            //    ConsoleHelper.resultWrite("同步程序已执行：" + Sync + "\r\n" + now.ToString() + "\r\n");
-            //    Console.WriteLine("同步程序已执行：" + now.ToString() + "\r\n");
-            //    //ConsoleHelper.hideConsole();
-            //}
+            string Sync = DeptSync();
+            if (!string.IsNullOrEmpty(Sync))
+            {
+                DateTime now = DateTime.Now;
+                ConsoleHelper.resultWrite(Sync + now.ToString() + "\r\n");
+                Console.WriteLine("同步完成，等待下次同步......" + now.ToString());
+            }
+            ConsoleHelper.hideConsole("");
             Console.ReadLine();
+
         }
 
         // 当时间发生的时候需要进行的逻辑处理等
@@ -53,59 +54,36 @@ namespace linkTimer
             int intHour = e.SignalTime.Hour;
             int intMinute = e.SignalTime.Minute;
             int intSecond = e.SignalTime.Second;
-            //DayOfWeek WeekDate = e.SignalTime.DayOfWeek;
+            DayOfWeek WeekDate = e.SignalTime.DayOfWeek;
             // 定制时间； 比如 在10：30 ：00 的时候执行某个函数
             int iHour = 21;
+            int iHour2 = 12;
             int iMinute = 30;
             int iSecond = 1;
-            ////设置 每秒钟的开始执行一次
-            //if (intSecond == iSecond)
-            //{
-            //    ConsoleHelper.showConsole();
-            //    Console.WriteLine("每秒钟的开始执行一次！");
-            //    Console.WriteLine("正在同步......");
-            //    DateTime now = DateTime.Now;
-            //    ConsoleHelper.resultWrite("同步成功！" + now.ToString() + "\r\n");
-            //    Console.WriteLine("同步完成！");
-            //    ConsoleHelper.hideConsole();
 
-            //    //test
-            //    ConsoleHelper.showConsole();
-            //    DataSet OADept = new DataSet();
-            //    string Sync1 = DeptSync(now.ToString("yyyy-MM-dd"));
-            //    if (!string.IsNullOrEmpty(Sync1))
-            //    {
-            //        //DateTime now = DateTime.Now;
-            //        ConsoleHelper.resultWrite(Sync1 + now.ToString() + "\r\n");
-            //        Console.WriteLine("同步成功！" + now.ToString());
-            //        ConsoleHelper.hideConsole();
-            //    }
-            //}
-            ////设置 每个小时的３０分钟开始执行
-            //if (intMinute == iMinute && intSecond == iSecond)
-            //{
-            //    Console.WriteLine("每个小时的３０分钟开始执行一次！");
-            //}
-
-            // 设置 每天的21：３０：００开始执行程序
-            if (intHour == iHour && intMinute == iMinute && intSecond == iSecond)
+            // 设置 每天的 21:30:00 或 12:30:00 开始执行程序
+            if (((intHour == iHour) || (intHour == iHour2)) && intMinute == iMinute && intSecond == iSecond)
             {
-                ConsoleHelper.showConsole();
+                ConsoleHelper.showConsole("");
                 Console.WriteLine("正在同步......");
-                //DataSet OADept = new DataSet();
-                //DateTime now = DateTime.Now;
-
-              //  string Sync = DeptSync(now.ToString("yyyy-MM-dd"));
-                //if (!string.IsNullOrEmpty(Sync))
-                //{
-
-                    //ConsoleHelper.resultWrite("同步程序已执行：" + "\r\n" + now.ToString() + "\r\n");
-                    //now.ToShortDateString();
-                    //Console.WriteLine("同步程序已执行：" + now.ToString() + "\r\n");
-                    ConsoleHelper.hideConsole();
-                //}
-
+                DateTime now = DateTime.Now;
+                string str = DeptSync();
+                if (!string.IsNullOrEmpty(str.Trim()))
+                {
+                    ConsoleHelper.resultWrite("同步程序已执行：" + str + "\r\n" + now.ToString() + "\r\n");
+                    now.ToShortDateString();
+                    Console.WriteLine("同步程序已执行：" + now.ToString() + "\r\n");
+                    ConsoleHelper.hideConsole("");
+                }
+                else
+                {
+                    ConsoleHelper.resultWrite("同步程序执行失败，请重启程序：\r\n" + now.ToString() + "\r\n");
+                    now.ToShortDateString();
+                    Console.WriteLine("同步程序执行失败，请重启程序：" + now.ToString() + "\r\n");
+                    ConsoleHelper.hideConsole("");
+                }
             }
+
         }
 
         //private void btnExecute_Click(object sender, EventArgs e)
@@ -134,7 +112,7 @@ namespace linkTimer
         /// <summary>
         ///调用oa和k3接口进行部门同步
         /// </summary>
-        private static string DeptSync(string time)
+        private static string DeptSync()
         {
             DateTime now = DateTime.Now;
 
@@ -143,7 +121,7 @@ namespace linkTimer
             //尝试调用oa接口，调用失败，返回相关信息
             try
             {
-                string oaUrl = "http://192.168.0.29:8080/axis/ysxt_jk.jws?wsdl";
+                string oaUrl = "http://172.16.1.60:8080/axis/ysxt_jk.jws?wsdl";
                 string oaName = "Bm_Info";
                 string syncDate= "kssj:" + now.AddDays(-1.0).ToString("yyyy-MM-dd") + ",jssj:" + now.ToString("yyyy-MM-dd");
                 string[] oaParam = { syncDate, "ysjkyh", "ysjkyh_123456" };
@@ -152,7 +130,12 @@ namespace linkTimer
             }
             catch (Exception ex)
             {
-                return "oa接口调用失败，无法同步。" + ex.ToString();
+                return "oa接口调用失败，无法同步。" + ex.ToString() + oaAllDept;
+            }
+            bool flag = oaCheck(oaAllDept);
+            if (flag)
+            {
+                return "没有需要同步的部门，等待下次同步！";
             }
 
             string k3Url = "http://192.168.0.60:8787/IDepartment.asmx?wsdl";
@@ -161,8 +144,21 @@ namespace linkTimer
             WebServiceProxy wsd1 = new WebServiceProxy(k3Url, k3Name);
             sResult = (string)wsd1.ExecuteQuery(k3Name, k3Param);
 
-            return sResult;  
-           
+            return sResult + flag;
+
+        }
+        private static bool oaCheck(string dept)
+        {
+            XElement element;
+            try
+            {
+                element = XElement.Parse(dept.Trim());
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return element.Element("resultRequest").Element("resultCode").Value.Equals("009");
         }
 
 

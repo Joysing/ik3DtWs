@@ -80,7 +80,7 @@ namespace linkTimer
         {
 
             this._wsdlUrl = wsdlUrl;
-            string wsdlName = WebServiceProxy.getWsclassName(wsdlUrl);
+            string wsdlName = getWsclassName(wsdlUrl);
             this._wsdlName = wsdlName;
             this._assName = string.Format(_wsdlNamespace, wsdlName);
             this._assPath = Path.GetTempPath() + this._assName + getMd5Sum(this._wsdlUrl) + ".dll";
@@ -116,18 +116,17 @@ namespace linkTimer
             {
                 //使用WebClient下载WSDL信息                         
                 WebClient web = new WebClient();
-                Stream stream = web.OpenRead(this._wsdlUrl);
-                ServiceDescription description = ServiceDescription.Read(stream);//创建和格式化WSDL文档  
+                //ServiceDescription description = ServiceDescription.Read(web.OpenRead(this._wsdlUrl));//创建和格式化WSDL文档  
                 ServiceDescriptionImporter importer = new ServiceDescriptionImporter();//创建客户端代理代理类  
                 importer.ProtocolName = "Soap";
                 importer.Style = ServiceDescriptionImportStyle.Client;  //生成客户端代理                         
                 importer.CodeGenerationOptions = CodeGenerationOptions.GenerateProperties | CodeGenerationOptions.GenerateNewAsync;
-                importer.AddServiceDescription(description, null, null);//添加WSDL文档  
+                //importer.AddServiceDescription(description, null, null);//添加WSDL文档  
                 //使用CodeDom编译客户端代理类                   
                 CodeNamespace nmspace = new CodeNamespace(_assName);    //为代理类添加命名空间                  
                 CodeCompileUnit unit = new CodeCompileUnit();
                 unit.Namespaces.Add(nmspace);
-                this.checkForImports(this._wsdlUrl, importer);
+                //this.checkForImports(this._wsdlUrl, importer);
                 ServiceDescriptionImportWarnings warning = importer.Import(nmspace, unit);
                 CodeDomProvider provider = CodeDomProvider.CreateProvider("CSharp");
                 CompilerParameters parameter = new CompilerParameters();
@@ -136,9 +135,9 @@ namespace linkTimer
                 parameter.ReferencedAssemblies.Add("System.Web.Services.dll");
                 parameter.ReferencedAssemblies.Add("System.Data.dll");
                 parameter.GenerateExecutable = false;
-                parameter.GenerateInMemory = false;
+                parameter.GenerateInMemory = true;
                 parameter.IncludeDebugInformation = false;
-                CompilerResults result = provider.CompileAssemblyFromDom(parameter, unit);
+                CompilerResults result = provider.CompileAssemblyFromDom(parameter, new CodeCompileUnit[] { unit });
                 provider.Dispose();
                 if (result.Errors.HasErrors)
                 {
@@ -336,11 +335,7 @@ namespace linkTimer
         /// <returns>false:不存在该程序集,true:已经存在该程序集</returns>                                
         private bool checkCache()
         {
-            if (File.Exists(this._assPath))
-            {
-                return true;
-            }
-            return false;
+            return File.Exists(this._assPath);
         }
 
         //私有方法，默认取url入口的文件名为类名  
