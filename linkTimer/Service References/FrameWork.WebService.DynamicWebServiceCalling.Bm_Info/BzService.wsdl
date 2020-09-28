@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:tns="http://localhost/services/BzService" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" targetNamespace="http://localhost/services/BzService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://localhost/services/BzService">
+      <xsd:element name="easCWZH">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="easCWZHResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="easPaymentValid">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="easPaymentValidResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="yxCheckState">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="json" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="uid" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="pwd" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="yxCheckStateResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sunshineDataPush">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="json" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="uid" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="pwd" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sunshineDataPushResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Bm_Info">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="systemId" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="time" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Bm_InfoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="mh_reimbursement_Info">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="queryString" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="uid" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="pwd" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="mh_reimbursement_InfoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="easCWZHResponse">
+    <wsdl:part name="parameters" element="tns:easCWZHResponse" />
+  </wsdl:message>
+  <wsdl:message name="easPaymentValidResponse">
+    <wsdl:part name="parameters" element="tns:easPaymentValidResponse" />
+  </wsdl:message>
+  <wsdl:message name="mh_reimbursement_InfoRequest">
+    <wsdl:part name="parameters" element="tns:mh_reimbursement_Info" />
+  </wsdl:message>
+  <wsdl:message name="easPaymentValidRequest">
+    <wsdl:part name="parameters" element="tns:easPaymentValid" />
+  </wsdl:message>
+  <wsdl:message name="yxCheckStateRequest">
+    <wsdl:part name="parameters" element="tns:yxCheckState" />
+  </wsdl:message>
+  <wsdl:message name="sunshineDataPushRequest">
+    <wsdl:part name="parameters" element="tns:sunshineDataPush" />
+  </wsdl:message>
+  <wsdl:message name="Bm_InfoResponse">
+    <wsdl:part name="parameters" element="tns:Bm_InfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="easCWZHRequest">
+    <wsdl:part name="parameters" element="tns:easCWZH" />
+  </wsdl:message>
+  <wsdl:message name="sunshineDataPushResponse">
+    <wsdl:part name="parameters" element="tns:sunshineDataPushResponse" />
+  </wsdl:message>
+  <wsdl:message name="yxCheckStateResponse">
+    <wsdl:part name="parameters" element="tns:yxCheckStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="mh_reimbursement_InfoResponse">
+    <wsdl:part name="parameters" element="tns:mh_reimbursement_InfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Bm_InfoRequest">
+    <wsdl:part name="parameters" element="tns:Bm_Info" />
+  </wsdl:message>
+  <wsdl:portType name="BzServicePortType">
+    <wsdl:operation name="easCWZH">
+      <wsdl:input name="easCWZHRequest" message="tns:easCWZHRequest" />
+      <wsdl:output name="easCWZHResponse" message="tns:easCWZHResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="easPaymentValid">
+      <wsdl:input name="easPaymentValidRequest" message="tns:easPaymentValidRequest" />
+      <wsdl:output name="easPaymentValidResponse" message="tns:easPaymentValidResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="yxCheckState">
+      <wsdl:input name="yxCheckStateRequest" message="tns:yxCheckStateRequest" />
+      <wsdl:output name="yxCheckStateResponse" message="tns:yxCheckStateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sunshineDataPush">
+      <wsdl:input name="sunshineDataPushRequest" message="tns:sunshineDataPushRequest" />
+      <wsdl:output name="sunshineDataPushResponse" message="tns:sunshineDataPushResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Bm_Info">
+      <wsdl:input name="Bm_InfoRequest" message="tns:Bm_InfoRequest" />
+      <wsdl:output name="Bm_InfoResponse" message="tns:Bm_InfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="mh_reimbursement_Info">
+      <wsdl:input name="mh_reimbursement_InfoRequest" message="tns:mh_reimbursement_InfoRequest" />
+      <wsdl:output name="mh_reimbursement_InfoResponse" message="tns:mh_reimbursement_InfoResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BzServiceHttpBinding" type="tns:BzServicePortType">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="easCWZH">
+      <wsdlsoap:operation soapAction="urn:com.perfect.webservice.BzService.easCWZH" />
+      <wsdl:input name="easCWZHRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="easCWZHResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="easPaymentValid">
+      <wsdlsoap:operation soapAction="urn:com.perfect.webservice.impl.BzServiceImpl.easPaymentValid" />
+      <wsdl:input name="easPaymentValidRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="easPaymentValidResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="yxCheckState">
+      <wsdlsoap:operation soapAction="urn:com.perfect.webservice.BzService.yxCheckState" />
+      <wsdl:input name="yxCheckStateRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="yxCheckStateResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sunshineDataPush">
+      <wsdlsoap:operation soapAction="urn:com.perfect.webservice.impl.BzServiceImpl.sunshineDataPush" />
+      <wsdl:input name="sunshineDataPushRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="sunshineDataPushResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Bm_Info">
+      <wsdlsoap:operation soapAction="urn:com.perfect.webservice.BzService.Bm_Info" />
+      <wsdl:input name="Bm_InfoRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Bm_InfoResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mh_reimbursement_Info">
+      <wsdlsoap:operation soapAction="urn:com.perfect.webservice.BzService.mh_reimbursement_Info" />
+      <wsdl:input name="mh_reimbursement_InfoRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="mh_reimbursement_InfoResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BzService">
+    <wsdl:port name="BzServiceHttpPort" binding="tns:BzServiceHttpBinding">
+      <wsdlsoap:address location="http://pt-uat.perfect99.com:8888/services/BzService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

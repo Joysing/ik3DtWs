@@ -121,10 +121,15 @@ namespace linkTimer
             //尝试调用oa接口，调用失败，返回相关信息
             try
             {
-                string oaUrl = "http://172.16.1.60:8080/axis/ysxt_jk.jws?wsdl";
+                //string oaUrl = "http://172.16.1.60:8080/axis/ysxt_jk.jws?wsdl";
+                string oaUrl = "http://pt-uat.perfect99.com:8888/services/BzService?wsdl";
                 string oaName = "Bm_Info";
                 string syncDate= "kssj:" + now.AddDays(-1.0).ToString("yyyy-MM-dd") + ",jssj:" + now.ToString("yyyy-MM-dd");
-                string[] oaParam = { syncDate, "ysjkyh", "ysjkyh_123456" };
+                //string[] oaParam = { syncDate, "ysjkyh", "ysjkyh_123456" };
+                DesEncryptor des = new DesEncryptor("perfect9", "perfect9");
+                string systemId = des.encode("K3");
+                string time = des.encode(Convert.ToString(CurrentTimeStamp(true)));
+                string[] oaParam = { systemId, time};
                 WebServiceProxy oaWsd = new WebServiceProxy(oaUrl, oaName);
                 oaAllDept = (string)oaWsd.ExecuteQuery(oaName, oaParam);
             }
@@ -161,7 +166,12 @@ namespace linkTimer
             return element.Element("resultRequest").Element("resultCode").Value.Equals("009");
         }
 
-
+        public static long CurrentTimeStamp(bool isMinseconds = false)
+        {
+            var ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            long times = Convert.ToInt64(isMinseconds ? ts.TotalMilliseconds : ts.TotalSeconds);
+            return times;
+        }
 
     }
 

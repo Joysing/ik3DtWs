@@ -116,17 +116,17 @@ namespace linkTimer
             {
                 //使用WebClient下载WSDL信息                         
                 WebClient web = new WebClient();
-                //ServiceDescription description = ServiceDescription.Read(web.OpenRead(this._wsdlUrl));//创建和格式化WSDL文档  
+                ServiceDescription description = ServiceDescription.Read(web.OpenRead(this._wsdlUrl));//创建和格式化WSDL文档  
                 ServiceDescriptionImporter importer = new ServiceDescriptionImporter();//创建客户端代理代理类  
                 importer.ProtocolName = "Soap";
                 importer.Style = ServiceDescriptionImportStyle.Client;  //生成客户端代理                         
                 importer.CodeGenerationOptions = CodeGenerationOptions.GenerateProperties | CodeGenerationOptions.GenerateNewAsync;
-                //importer.AddServiceDescription(description, null, null);//添加WSDL文档  
+                importer.AddServiceDescription(description, null, null);//添加WSDL文档  
                 //使用CodeDom编译客户端代理类                   
                 CodeNamespace nmspace = new CodeNamespace(_assName);    //为代理类添加命名空间                  
                 CodeCompileUnit unit = new CodeCompileUnit();
                 unit.Namespaces.Add(nmspace);
-                //this.checkForImports(this._wsdlUrl, importer);
+                this.checkForImports(this._wsdlUrl, importer);
                 ServiceDescriptionImportWarnings warning = importer.Import(nmspace, unit);
                 CodeDomProvider provider = CodeDomProvider.CreateProvider("CSharp");
                 CompilerParameters parameter = new CompilerParameters();
@@ -148,8 +148,16 @@ namespace linkTimer
                     }
                     throw new Exception(errors);
                 }
-                this.copyTempAssembly(result.PathToAssembly);
-                this.initTypeName();
+                if (result.PathToAssembly == null)
+                {
+                    initTypeNameByCompiledAssembly(result);
+                }
+                else
+                {
+                    copyTempAssembly(result.PathToAssembly);
+                    initTypeName();
+                }
+                
             }
             catch (Exception e)
             {
@@ -288,6 +296,24 @@ namespace linkTimer
             _typeName = serviceAsm.GetType(this._assName + "." + objTypeName);
         }
 
+        /// <summary>                               
+        /// 得到代理类类型名称                                 
+        /// </summary>                                  
+        private void initTypeNameByCompiledAssembly(CompilerResults cr)
+        {
+            Assembly serviceAsm = cr.CompiledAssembly;
+            Type[] types = serviceAsm.GetTypes();
+            string objTypeName = "";
+            foreach (Type t in types)
+            {
+                if (t.BaseType == typeof(SoapHttpClientProtocol))
+                {
+                    objTypeName = t.Name;
+                    break;
+                }
+            }
+            _typeName = serviceAsm.GetType(this._assName + "." + objTypeName);
+        }
         /// <summary>                       
         /// 根据web   service文档架构向代理类添加ServiceDescription和XmlSchema                             
         /// </summary>                                  
