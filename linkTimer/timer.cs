@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Linq;
 using System.Data.SqlClient;
@@ -122,9 +123,8 @@ namespace linkTimer
             try
             {
                 //string oaUrl = "http://172.16.1.60:8080/axis/ysxt_jk.jws?wsdl";
-                string oaUrl = "http://pt-uat.perfect99.com:8888/services/BzService?wsdl";
+                string oaUrl = ConfigurationManager.AppSettings["OAWebApiURL"].ToString().Trim();
                 string oaName = "Bm_Info";
-                string syncDate= "kssj:" + now.AddDays(-1.0).ToString("yyyy-MM-dd") + ",jssj:" + now.ToString("yyyy-MM-dd");
                 //string[] oaParam = { syncDate, "ysjkyh", "ysjkyh_123456" };
                 DesEncryptor des = new DesEncryptor("perfect9", "perfect9");
                 string systemId = des.encode("K3");
@@ -143,7 +143,8 @@ namespace linkTimer
                 return "没有需要同步的部门，等待下次同步！";
             }
 
-            string k3Url = "http://192.168.0.60:8787/IDepartment.asmx?wsdl";
+            //string k3Url = "http://192.168.0.60:8787/IDepartment.asmx?wsdl";
+            string k3Url = ConfigurationManager.AppSettings["K3WebApiURL"].ToString().Trim();
             string k3Name = "T_Dept";
             string[] k3Param = {oaAllDept };
             WebServiceProxy wsd1 = new WebServiceProxy(k3Url, k3Name);
